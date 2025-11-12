@@ -6,7 +6,7 @@
       - net-tools
 
 - name: Download Elastic GPG key
-  ansible.builtin.get_url:
+  get_url:
     url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
     dest: /tmp/GPG-KEY-elasticsearch
 
@@ -25,8 +25,5 @@
   apt_repository:
     repo: 'deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main'
     filename: 'elastic-9.x'
+    update_cache: true
     state: present
-
-- name: APT update cache
-  apt:
-    update_cache: true    

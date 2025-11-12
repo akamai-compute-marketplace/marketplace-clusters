@@ -1,6 +1,6 @@
 # Akamai Cloud Marketplace Cluster Functions
 
-This directory contains a lisf of helper roles that can be imported via Ansible when clustered applications are being provisioned. This allows us to use commonly-used and repetitive tasks as modules similarly to how functions work in programming.
+This directory contains a list of helper roles that can be imported via Ansible when clustered applications are being provisioned. This allows us to use commonly-used and repetitive tasks as modules similarly to how functions work in programming.
 
 ## Helper Functions
 
@@ -36,4 +36,4 @@ Example:
 
 ## Creating Your Own
 
-Additional Linode Helpers can be added while respecting [Ansible common practice](https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html) and directory structure. Linode Helpers should perform common, repeatable system configuration tasks with minimal dependancies. Linode Helper functions can be imported as roles as needed in playbooks. Please see [DEVELOPMENT.md](docs/DEVELOPMENT.md) for more detailed standards.
+Additional Linode Helpers can be added while respecting [Ansible common practice](https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html) and directory structure. Linode Helpers should perform common, repeatable system configuration tasks with minimal dependencies. Linode Helper functions can be imported as roles as needed in playbooks. Please see [DEVELOPMENT.md](docs/DEVELOPMENT.md) for more detailed standards.

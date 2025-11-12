@@ -23,8 +23,6 @@ else
   set -e
 fi
 
-# ELK PoC
-
 ## Linode/SSH Security Settings
 #<UDF name="token_password" label="Your Linode API token" />
 #<UDF name="clusterheader" label="Cluster Settings" default="Yes" header="Yes">
@@ -41,19 +39,19 @@ fi
 #<UDF name="cluster_name" label="Cluster Name" example="Example: ELK">
 
 # Kibana size
-#<UDF name="cluster_size" label="Kinaba Size" oneOf="1" default="1">
+#<UDF name="cluster_size" label="Kibana Size" oneOf="1" default="1">
 
 # Cluster size ($prefix_cluster_size):
-#<UDF name="elasticsearch_cluster_size" label="Elasticsearch Cluster Size" oneOf="2,3" default="2">
-#<UDF name="logstash_cluster_size" label="Logstash Cluster Size" oneOf="2,4" default="2">
+#<UDF name="elasticsearch_cluster_size" label="Elasticsearch Cluster Size" oneOf="1,2,4,6,8" default="2">
+#<UDF name="logstash_cluster_size" label="Logstash Cluster Size" oneOf="1,2,4,6,8" default="2">
 
-# Instance types($prefix_cluster_type):
-#<UDF name="elasticsearch_cluster_type" label="Elasticsearch Instance Type" oneOf="Dedicated 4GB,Dedicated 8GB,Dedicated 16GB,Dedicated 32GB,Dedicated 64GB" default="Dedicated 4GB">
-#<UDF name="logstash_cluster_type" label="Logstash Instance Type" oneOf="Dedicated 4GB,Dedicated 8GB,Dedicated 16GB,Dedicated 32GB,Dedicated 64GB" default="Dedicated 4GB">
+# Instance types ($prefix_cluster_type):
+#<UDF name="elasticsearch_cluster_type" label="Elasticsearch Instance Type" oneOf="Dedicated 4GB,Dedicated 8GB,Dedicated 16GB,Dedicated 32GB,Dedicated 64GB,Dedicated 96GB,Dedicated 128GB,Dedicated 256GB" default="Dedicated 4GB">
+#<UDF name="logstash_cluster_type" label="Logstash Instance Type" oneOf="Dedicated 4GB,Dedicated 8GB,Dedicated 16GB,Dedicated 32GB,Dedicated 64GB,Dedicated 96GB,Dedicated 128GB,Dedicated 256GB" default="Dedicated 4GB">
 
 #<UDF name="beats_allow" label="Filebeat IP addresses allowed to access Logstash" example="192.0.2.21, 198.51.100.17" default="">
 
-#<UDF name="logstash_ingest_username" label="Logstash username to be created for indeces." example="logstash_ingest" default="logstash_ingest">
+#<UDF name="logstash_ingest_username" label="Logstash username to be created for indices." example="logstash_ingest" default="logstash_ingest">
 
 #<UDF name="elasticsearch_index_name" label="Elasticsearch index to be created for log ingestion" example="wordpress-logs" default="wordpress-logs">
 

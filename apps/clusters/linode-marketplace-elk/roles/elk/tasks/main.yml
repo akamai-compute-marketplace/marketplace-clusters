@@ -5,7 +5,7 @@
 
 # Install ELK
 
-- name: Install Logstashm, Elasticsearch and Kibana
+- name: Install Logstash, Elasticsearch and Kibana
   import_tasks: install_elk.yml
 
 - name: Generate SSL certificates
@@ -17,7 +17,6 @@
 - name: Configure Elasticsearch
   import_tasks: configure_elasticsearch.yml
 
-# set no_log in prod
 - name: Reset user passwords in Elasticsearch
   import_tasks: password_reset.yml
   no_log: true

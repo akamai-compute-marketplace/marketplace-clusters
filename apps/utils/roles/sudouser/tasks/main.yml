@@ -3,8 +3,8 @@
 # check system users
 
 # sanitation input is need to avoid the deployment breaking when a customer provides
-# a username that already exist on the system. If the username provided exist, the deployment will
-# hard fail with an appropiate message. We want to do this to ensure reliable delivery of the app
+# a username that already exist on the system. If the username provided exists, the deployment will
+# hard fail with an appropriate message. We want to do this to ensure reliable delivery of the app
 # in the way it intended. 
 
 # Analysis:
@@ -22,7 +22,7 @@
   run_once: true
   delegate_to: localhost
 
-- name: create system user list
+- name: Create system user list
   set_fact:  
     system_users: "{{ getusers['content'] | b64decode | regex_replace(' ', '') | split() | map('regex_replace', '^([^:]+):.*', '\\1') | list }}"
   run_once: true
@@ -41,7 +41,7 @@
 - name: Generating sudo user password
   set_fact:
     password: "{{ lookup('password', '/dev/null length=45 chars=ascii_letters,digits') }}"
-    cacheable: yes
+    cacheable: true
   no_log: true
   run_once: true
   delegate_to: localhost
@@ -54,8 +54,8 @@
     password: "{{ password | password_hash('sha512') }}"
     update_password: on_create
     expires: -1
-    append: yes
-    generate_ssh_key: yes
+    append: true
+    generate_ssh_key: true
     ssh_key_bits: 4096
     ssh_key_file: .ssh/id_rsa
     state: present

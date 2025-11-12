@@ -46,7 +46,7 @@ Ideally want to remove the `/home/admin/.credentials` file once you copy the cre
 
 ### SSL Certificates
 
-All nodes in your ELK cluster communicates securetly which means that traffic flowing between each instance is encrypted via mTLS. Every component in your stack has SSL certifcates and follow the same convention and semantics. For example:
+All nodes in your ELK cluster communicates securetly which means that traffic flowing between each instance is encrypted via mTLS. Every component in your stack has SSL certificates and follow the same convention and semantics. For example:
 
 - Kibana (provisioner node):
     - `/etc/kibana/certs/`
@@ -59,7 +59,7 @@ All nodes in your ELK cluster communicates securetly which means that traffic fl
 
 Certificate name are created according to the instance's hostname. 
 
-The provisioner node also contains all certificates in the cluster because it's used a Certificate Authority to generate, sign and distribute the certificates to the cluster. You can find all of the certicates including the CA private key below:
+The provisioner node also contains all certificates in the cluster because it's used a Certificate Authority to generate, sign and distribute the certificates to the cluster. You can find all of the certificates including the CA private key below:
 
 - `/root/cluster-certificates`
 
@@ -154,7 +154,7 @@ filebeat.inputs:
     - /var/log/apache2/access.log
 ```
 
-In this example, the `id` must be unique to the instance that way you know the source of the log. Ideally this should be the hostname of the instnace. Update `paths` to the log that you want to send to Logstash.
+In this example, the `id` must be unique to the instance that way you know the source of the log. Ideally this should be the hostname of the instance. Update `paths` to the log that you want to send to Logstash.
 
 Next, while in the `/etc/filebeat/filebeat.yml`, update the filbeat output:
 
