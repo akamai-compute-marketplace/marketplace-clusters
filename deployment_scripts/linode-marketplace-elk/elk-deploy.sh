@@ -25,7 +25,7 @@ fi
 
 ## Linode/SSH Security Settings
 #<UDF name="token_password" label="Your Linode API token" />
-#<UDF name="clusterheader" label="Cluster Settings" default="Yes" header="Yes">
+#<UDF name="soa_email_address" label="Email address (for the Let's Encrypt SSL certificate)" example="Example: user@example.com">
 #<UDF name="user_name" label="The limited sudo user to be created for the Linode: *No Capital Letters or Special Characters*">
 #<UDF name="disable_root" label="Disable root access over SSH?" oneOf="Yes,No" default="No">
 
@@ -34,30 +34,29 @@ fi
 #<UDF name="domain" label="Domain" example="The domain for the DNS record: example.com (Requires API token)" default="">
 
 # ELK Settings #
+#<UDF name="clusterheader" label="Cluster Settings" default="Yes" header="Yes">
 
 # Cluster name
-#<UDF name="cluster_name" label="Cluster Name" example="Example: ELK">
+#<UDF name="cluster_name" label="Cluster Name" example="Example: ELK" default="ELK Stack">
 
 # Kibana size
 #<UDF name="cluster_size" label="Kibana Size" oneOf="1" default="1">
 
 # Cluster size ($prefix_cluster_size):
-#<UDF name="elasticsearch_cluster_size" label="Elasticsearch Cluster Size" oneOf="1,2,4,6,8" default="2">
-#<UDF name="logstash_cluster_size" label="Logstash Cluster Size" oneOf="1,2,4,6,8" default="2">
+#<UDF name="elasticsearch_cluster_size" label="Elasticsearch Cluster Size" oneOf="2,4,6,8,10,12,14" default="2">
+#<UDF name="logstash_cluster_size" label="Logstash Cluster Size" oneOf="2,4,6,8,10,12,14" default="2">
 
 # Instance types ($prefix_cluster_type):
 #<UDF name="elasticsearch_cluster_type" label="Elasticsearch Instance Type" oneOf="Dedicated 4GB,Dedicated 8GB,Dedicated 16GB,Dedicated 32GB,Dedicated 64GB,Dedicated 96GB,Dedicated 128GB,Dedicated 256GB" default="Dedicated 4GB">
 #<UDF name="logstash_cluster_type" label="Logstash Instance Type" oneOf="Dedicated 4GB,Dedicated 8GB,Dedicated 16GB,Dedicated 32GB,Dedicated 64GB,Dedicated 96GB,Dedicated 128GB,Dedicated 256GB" default="Dedicated 4GB">
 
-#<UDF name="beats_allow" label="Filebeat IP addresses allowed to access Logstash" example="192.0.2.21, 198.51.100.17" default="">
+#<UDF name="beats_allow" label="Filebeat IP addresses allowed to access Logstash" example="Example: 192.0.2.21/32, 198.51.100.17/24" default="">
 
-#<UDF name="logstash_ingest_username" label="Logstash username to be created for indices." example="logstash_ingest" default="logstash_ingest">
+#<UDF name="logstash_ingest_username" label="Logstash username to be created for indeces." example="Example: logstash_ingest" default="">
 
-#<UDF name="elasticsearch_index_name" label="Elasticsearch index to be created for log ingestion" example="wordpress-logs" default="wordpress-logs">
-
+#<UDF name="elasticsearch_index_name" label="Elasticsearch index to be created for log ingestion" example="Example: wordpress-logs" default="">
 
 # SSL vars
-#<UDF name="soa_email_address" label="Email address (for the Let's Encrypt SSL certificate)" example="Example: user@example.com">
 
 # <UDF name="sslheader" label="SSL Information" header="Yes" default="Yes" required="Yes">
 # <UDF name="country_name" label="Details for self-signed SSL certificates: Country or Region" oneof="AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW" />
@@ -327,6 +326,10 @@ function run {
   provisioner_sshkey
   provisioner_vars
   udf
+
+  # update plan label with plan typeId
+  python3 plan_typeid.py
+
   # run playbooks
   ansible-playbook -v provision.yml && ansible-playbook -v -i hosts site.yml
 }

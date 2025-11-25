@@ -23,7 +23,7 @@
     body:
       cluster: ["manage_index_templates", "monitor"]
       indices:
-        - { names: [ "wordpress-logs"], privileges: ["create", "write", "delete", "create_index"] }
+        - { names: [ "{{ elasticsearch_index_name }}"], privileges: ["create", "write", "delete", "create_index"] }
     headers:
       Content-Type: 'application/json'
   run_once: true

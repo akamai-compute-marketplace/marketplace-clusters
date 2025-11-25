@@ -7,9 +7,9 @@ This directory contains a list of helper roles that can be imported via Ansible 
 | Name | Description |
 | :--- | :---        |
 | certbot_ssl | Generates and sets auto-renew for Let's Encrypt certificates. More information on usage see [below](#Certbot-SSL) |
-| remove_provision_keys | Removes any keys created by the provisioner to create the cluster. If `DEBUG` is present as a variable during runtime, keys are not removed to allow further deployment debuging. |
+| remove_provision_keys | Removes any keys created by the provisioner to create the cluster. If `DEBUG` is present as a variable during runtime, keys are not removed to allow further deployment debugging. |
 | securessh | Perform SSH hardening by updating `/etc/ssh/sshd_config` file  to prevent password authentication and enable public key authentication for all users, including root. |
-| setdomain | Sets the `_domain` variable for configuring SSL certificates on a public facing HTTP endpoint. This is used in conjuction with the `certbot_ssl` module to create valid Let's Encrupt certificates |
+| setdomain | Sets the `_domain` variable for configuring SSL certificates on a public facing HTTP endpoint. This is used in conjunction with the `certbot_ssl` module to create valid Let's Encrypt certificates |
 | setrootpwd | Sets the root password provided in Cloud Manager to all cluster instances. |
 | sshkey | Copies over the provided SSH keys from Cloud manager to all cluster instances. |
 | sudouser | Creates a limited sudo user on the system. Validation is performed to ensure that the provided username is not already present in the system. |

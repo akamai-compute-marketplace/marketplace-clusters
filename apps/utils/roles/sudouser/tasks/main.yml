@@ -3,7 +3,7 @@
 # check system users
 
 # sanitation input is need to avoid the deployment breaking when a customer provides
-# a username that already exist on the system. If the username provided exists, the deployment will
+# a username that already exists on the system. If the username provided exists, the deployment will
 # hard fail with an appropriate message. We want to do this to ensure reliable delivery of the app
 # in the way it intended. 
 
@@ -28,7 +28,7 @@
   run_once: true
   delegate_to: localhost    
 
-- name: Check if {{ username }} user already exist
+- name: Check if {{ username }} user already exists
   fail:
     msg: |
       [FATAL] illegal username provided --> {{ username }} 

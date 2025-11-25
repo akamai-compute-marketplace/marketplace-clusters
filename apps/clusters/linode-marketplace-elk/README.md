@@ -35,10 +35,10 @@ In this file you will find the following credentials:
 | :---          | :----  |
 | sudo username | The privileged sudo username created.  |
 | sudo password | The password to the sudo user you created. |
-| Elastic password | Elasticsearch was secured during the configuration. This is the password you use to log into the Elastic web interface. |
+| Elastic password | This is the password you use to log into the Elastic web interface. |
 | Kibana system password | This password allows Kibana to connect to Elasticsearch. |
-| Logstash ingest password | Logstash connects to Elasticsearch on a via an ingest user that was created. |
-| Logstash ingest user | This user is what Logstash uses in the `/etc/logstash/conf.d/example-pipeline.conf`. It's a limited user that has access to an indeces, and a Index Lifecyle Policy. |
+| Logstash ingest password | The password Logstash uses to connect Elasticsearch using the created ingest user. |
+| Logstash ingest user | This user is that Logstash uses in the `/etc/logstash/conf.d/example-pipeline.conf`. It's a limited user that has access to an index, and a Index Lifecyle Management Policy. |
 
 [!WARNING]
 
