@@ -28,7 +28,7 @@
       authorized_keys: '{{ provisioner_ssh_pubkey }}'
       private_ip: true
       #stackscript_id: 00000
-      #ua_prefix: 'cloud-marketplace-elk'
+      ua_prefix: 'cloud-marketplace-elk'
       tags: '{{ linode_tags }}'
       state: present
     with_sequence: count='{{ elasticsearch_cluster_size }}'
@@ -52,7 +52,7 @@
       authorized_keys: '{{ provisioner_ssh_pubkey }}'
       private_ip: true
       #stackscript_id: 00000
-      #ua_prefix: 'cloud-marketplace-elk'
+      ua_prefix: 'cloud-marketplace-elk'
       tags: '{{ linode_tags }}'
       state: present
     with_sequence: count='{{ logstash_cluster_size }}'
