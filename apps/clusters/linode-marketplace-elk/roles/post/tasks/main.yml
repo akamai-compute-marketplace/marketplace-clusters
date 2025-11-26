@@ -32,5 +32,7 @@
       # ELK creds
       Elastic password: {{ elasticsearch_password }}
       Kibana system password: {{ kibana_system_password }}
+      {%if logstash_ingest_username is defined%}
       Logstash ingest user: {{ logstash_ingest_username }}
       Logstash ingest password: {{ logstash_ingest_password}}
+      {%endif%}
