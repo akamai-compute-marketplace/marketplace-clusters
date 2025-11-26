@@ -107,14 +107,17 @@ function provision_failed {
 }
 
 function cleanup {
+  if [ "$?" != "0" ]; then
+    echo "PLAYBOOK FAILED. See /var/log/stackscript.log for details."
+    echo "[info] Running Destroy playbook"
+    destroy
+  fi
+
   # provisioner keys
   if [[ -f ${HOME}/.ssh/id_ansible_ed25519{,.pub} ]]; then
     echo "[info] Removing provisioner keys.."
     rm ${HOME}/.ssh/id_ansible_ed25519{,.pub}
   fi
-
-  echo "[info] Running Destroy playbook"
-  destroy
 
   if [ -d "${WORK_DIR}" ]; then
     echo "[info] Cleanup - Removing ${WORK_DIR}"
