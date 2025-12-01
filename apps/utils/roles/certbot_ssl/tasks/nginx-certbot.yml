@@ -9,7 +9,7 @@
 - name: Set certbot plugin
   set_fact:
     certbot_plugin: nginx
-    cacheable: yes
+    cacheable: true
   run_once: true
   delegate_to: "{{ host }}"    
 
