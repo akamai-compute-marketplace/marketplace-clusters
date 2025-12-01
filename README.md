@@ -37,9 +37,9 @@ All Akamai Cloud Marketplace applications leverage the use of [Stackscripts](#St
 - The Ansible playbook is pulled down for the deployement from Github
 - Ansible configures the instance
 
-Clustered applications, refered to as One-Click clusters, utilizes Linode's Ansible collection to configure and provision new instances for the clustered application.
+Clustered applications, referred to as One-Click clusters, utilizes Linode's Ansible collection to configure and provision new instances for the clustered application.
 
-At the root of every application, the `provision.yml` is responsible for initial provisioning process. This is run by the first instance that is created on the cluster which typically is refered to as the provioner instance. The provisioner deploys new instances, get information about the instances via API and building the correct data structure which can be iterated later in the playbook.
+At the root of every application, the `provision.yml` is responsible for initial provisioning process. This is run by the first instance that is created on the cluster which typically is referred to as the provisioner instance. The provisioner deploys new instances, get information about the instances via API and building the correct data structure which can be iterated later in the playbook.
 
 The `site.yml` contains your typical Ansible playbook to configure the stack against the hosts in the `hosts` file. In the event that a deployment fails, the `destroy.yml` is triggered and all instances except the provisioner node are destroyed. This allows the user to analyze the `/var/log/stackscript.log` for the failure.
 
