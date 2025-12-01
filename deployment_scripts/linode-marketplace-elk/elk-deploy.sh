@@ -52,7 +52,7 @@ fi
 
 #<UDF name="beats_allow" label="Filebeat IP addresses allowed to access Logstash" example="Example: 192.0.2.21/32, 198.51.100.17/24" default="">
 
-#<UDF name="logstash_ingest_username" label="Logstash username to be created for indeces." example="Example: logstash_ingest" default="">
+#<UDF name="logstash_ingest_username" label="Logstash username to be created for indices." example="Example: logstash_ingest" default="">
 
 #<UDF name="elasticsearch_index_name" label="Elasticsearch index to be created for log ingestion" example="Example: wordpress-logs" default="">
 
