@@ -1,10 +1,10 @@
 # Akamai Cloud ELK One-Click Cluster
 
-![elasticstack-overview](docs/assets/elaticstack-overview.png)
+![elasticstack-overview](docs/assets/elasticstack-overview.png)
 
-Deploy a fully configured, multi-node ELK (Elasticsearch, Logstash, Kibana) cluster on the Akamai Cloud using our One-Click deployement. Our ELK stack leverages mTLS certificates to secure communication between nodes, ensuring data integrity and privacy across the cluster.
+Deploy a fully configured, multi-node ELK (Elasticsearch, Logstash, Kibana) cluster on the Akamai Cloud using our One-Click deployment. Our ELK stack leverages mTLS certificates to secure communication between nodes, ensuring data integrity and privacy across the cluster.
 
-This solution delivers powerful log management, search, and visualization capabilities helping you centralize logs, monitor applications, and gain real-time insights into system performance. Our One-Click Elk deployement removes the complexity of manual setup so you can focus on analyzing data instead of configuring infrastructure.
+This solution delivers powerful log management, search, and visualization capabilities helping you centralize logs, monitor applications, and gain real-time insights into system performance. Our One-Click Elk deployment removes the complexity of manual setup so you can focus on analyzing data instead of configuring infrastructure.
 
 ## Software Included
 
@@ -15,7 +15,7 @@ The ELK cluster is configured on the `elastic-9.x` package.
 | Kibana | 9.1.3 | A visualization and dashboard tool that lets you explore, analyze, and present data stored in Elasticsearch. |
 | Elasticsearch | 9.1.3 | A distributed search and analytics engine that stores, indexes, and queries data at scale in real time. |
 | Logstash | 9.1.3 | A data processing pipeline that ingests, transforms, and ships logs or event data from multiple sources. |
-| Nginx | 1.24.0 | Web server reverse proxy. Used for Elastic web IU in Kibana. |
+| Nginx | 1.24.0 | Web server reverse proxy. Used for Elastic web UI in Kibana. |
 
 **Supported Distribution:**
 

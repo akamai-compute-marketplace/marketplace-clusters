@@ -6,8 +6,6 @@
   run_once: true
   delegate_to: localhost
 
-# index name should be UDF
-
 - name: Create Logstash writer role
   uri:
     url: "{{ elasticsearch_endpoint }}/_security/role/logstash_writer"

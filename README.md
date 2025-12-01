@@ -14,7 +14,7 @@ A Marketplace application consists of three major components:
 
 ### Stackscript
 
-A [Stackscript](https://techdocs.akamai.com/cloud-computing/docs/write-a-custom-script-for-use-with-stackscripts) is a Bash script that is stored on Linode hosts and is accessible to all customers. When an instance is booted, the Stackscript is excecuted to initiate the provisioning process.
+A [Stackscript](https://techdocs.akamai.com/cloud-computing/docs/write-a-custom-script-for-use-with-stackscripts) is a Bash script that is stored on Linode hosts and is accessible to all customers. When an instance is booted, the Stackscript is executed to initiate the provisioning process.
 
 ### Ansible Playbook
 

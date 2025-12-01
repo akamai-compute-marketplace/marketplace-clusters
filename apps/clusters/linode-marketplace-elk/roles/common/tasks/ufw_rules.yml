@@ -5,7 +5,7 @@
     logstash_ips: "{{ data.logstash | map(attribute='instance.ip_priv1') | list }}"
     elasticsearch_ips: "{{ data.elasticsearch | map(attribute='instance.ip_priv1') | list }}"
     kibana_ips: "{{ data.kibana | map(attribute='instance.ip_priv1') | list }}"
-    cacheable: yes
+    cacheable: true
   run_once: true
   delegate_to: localhost
 
