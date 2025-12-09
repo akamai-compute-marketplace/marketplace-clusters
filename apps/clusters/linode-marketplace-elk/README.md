@@ -46,7 +46,7 @@ Ideally want to remove the `/home/admin/.credentials` file once you copy the cre
 
 ### SSL Certificates
 
-All nodes in your ELK cluster communicates securetly which means that traffic flowing between each instance is encrypted via mTLS. Every component in your stack has SSL certificates and follow the same convention and semantics. For example:
+All nodes in your ELK cluster communicates securely which means that traffic flowing between each instance is encrypted via mTLS. Every component in your stack has SSL certificates and follow the same convention and semantics. For example:
 
 - Kibana (provisioner node):
     - `/etc/kibana/certs/`

@@ -34,7 +34,7 @@ All Akamai Cloud Marketplace applications leverage the use of [Stackscripts](#St
 
 - The deployment Stackscript gathers the necessary information from the user. Variables are captured from the Cloud Manager as UDF fields
 - The UDF fields are exported to the instance as local variables
-- The Ansible playbook is pulled down for the deployement from Github
+- The Ansible playbook is pulled down for the deployment from Github
 - Ansible configures the instance
 
 Clustered applications, referred to as One-Click clusters, utilizes Linode's Ansible collection to configure and provision new instances for the clustered application.

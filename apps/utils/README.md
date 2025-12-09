@@ -18,7 +18,7 @@ This directory contains a list of helper roles that can be imported via Ansible 
 
 ### Certbot SSL
 
-Generates and sets auto-renew for Let's Encrypt certificates. This helper allows us to configure SSL for a web HTTP endpoint in a clustered environment. When using this helper the task, must include the following variables: 
+Generates and sets auto-renew for Let's Encrypt certificates. This helper allows us to configure SSL for a web HTTP endpoint in a clustered environment. When using this helper, the task must include the following variables: 
 - `host`
 - `webserver_task`
 

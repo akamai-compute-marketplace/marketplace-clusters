@@ -32,7 +32,7 @@
   fail:
     msg: |
       [FATAL] illegal username provided --> {{ username }} 
-      The user already exist on the system. Please redeploy the Marketplace app using a non-system user for the sudo user value.
+      The user already exists on the system. Please redeploy the Marketplace app using a non-system user for the sudo user value.
       {{ system_users }}
   run_once: true
   delegate_to: localhost      
