@@ -1,0 +1,13 @@
+---
+# global vars
+cassandra_datadir: '/var/lib/cassandra'
+cassandra_config_directory: '/etc/cassandra'
+
+# ssl
+cassandra_ssl_directory: /etc/cassandra/ssl
+cassandra_ssl_ca_directory: /etc/cassandra/ssl/ca
+cassandra_ssl_req_directory: /etc/cassandra/ssl/req
+cassandra_ssl_key_directory: /etc/cassandra/ssl/key
+cassandra_ssl_cert_directory: /etc/cassandra/ssl/cert
+cassandra_ssl_keystore_directory: /etc/cassandra/ssl/keystore
+cassandra_ssl_truststore_directory: /etc/cassandra/ssl/truststore
