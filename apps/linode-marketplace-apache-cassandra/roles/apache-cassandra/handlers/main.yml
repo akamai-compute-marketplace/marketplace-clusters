@@ -1,0 +1,7 @@
+---
+- name: Restart cassandra
+  systemd:
+    name: cassandra
+    state: restarted
+    daemon_reload: true
+    enabled: true
