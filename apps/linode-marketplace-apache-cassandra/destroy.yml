@@ -1,0 +1,15 @@
+---
+# destroy instances
+- name: Destroying cassandra instances
+  hosts: localhost
+  connection: local
+  vars_files: [group_vars/apache-cassandra/vars]
+  vars:
+    count: '{{ cluster_size - 1 }}'
+  tasks:
+    - name: Deleting instances except provisioner
+      linode.cloud.instance:
+        label: 'apache-cassandra-{{ item | int + 1 }}-{{ uuid }}'
+        api_token: '{{ api_token }}'
+        state: absent
+      with_sequence: count='{{ count }}'
