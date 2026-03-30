@@ -6,12 +6,12 @@
       - group_vars/galera/secret_vars
   
   vars:
-    count: 3
+    count: '{{ cluster_size }}'
 
   tasks:
   - name: creating galera linodes
     linode.cloud.instance:
-      label: '{{ galera_prefix }}{{ item | int + 1 }}'
+      label: 'galera-instance-{{ item | int + 1 }}'
       api_token: '{{ token }}'
       type: '{{ type }}'
       region: '{{ region }}'
@@ -25,12 +25,12 @@
       tags: '{{ linode_tags }}'
       state: present
     register: linode
-    with_sequence: count='{{ count - 1 }}'
+    with_sequence: count='{{ count - 1}}'
 
   - name: Get info about an instance by label
     linode.cloud.instance_info:
       api_token: '{{ token }}'
-      label: '{{ galera_prefix }}{{ item }}'
+      label: 'galera-instance-{{ item }}'
     register: info
     with_sequence: count='{{ count }}'
 
