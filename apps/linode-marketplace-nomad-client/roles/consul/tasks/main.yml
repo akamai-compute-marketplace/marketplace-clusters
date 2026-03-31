@@ -1,0 +1,10 @@
+---
+- name: Install consul
+  import_tasks: consul_install.yml
+  when: cluster_mode == "client"
+
+- name: Configure consul
+  import_tasks: consul_config.yml
+
+- name: Run consul
+  import_tasks: consul_run.yml

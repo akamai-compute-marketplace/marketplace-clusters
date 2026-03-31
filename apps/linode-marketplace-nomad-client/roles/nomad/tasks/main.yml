@@ -1,0 +1,10 @@
+---
+- name: Install nomad
+  import_tasks: nomad_install.yml
+  when: cluster_mode == "client"
+
+- name: Configure nomad
+  import_tasks: nomad_config.yml
+
+- name: Run nomad
+  import_tasks: nomad_run.yml

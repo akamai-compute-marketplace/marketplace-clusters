@@ -1,0 +1,57 @@
+---
+# roles/common/tasks
+- name: Configure hostnames for cluster nodes
+  hostname:
+    use: systemd
+    name: '{{ nomad_data.server[count].instance.hostname }}'
+  run_once: true
+  delegate_to: '{{ item }}'
+  loop: "{{ groups['nomad_cluster'] }}"
+  loop_control:
+    index_var: count
+
+- name: Configure hostnames for client nodes
+  hostname:
+    use: systemd
+    name: '{{ nomad_data.client[count].instance.hostname }}'
+  run_once: true
+  delegate_to: '{{ item }}'
+  loop: "{{ groups['nomad_client'] }}"
+  loop_control:
+    index_var: count
+
+- name: Update /etc/hosts on all of the nodes
+  blockinfile:
+    path: /etc/hosts
+    marker: '# {mark} nomad servers'
+    block: |
+      #jinja2: trim_blocks:False
+      # nomad{%- for count in range(servers) %}
+      {{ nomad_data.server[count].instance.ip_priv1 }} {{ nomad_data.server[count].instance.hostname }}
+      {%- endfor %}
+      {%- for count in range(clients) %}
+      {{ nomad_data.client[count].instance.ip_priv1 }} {{ nomad_data.client[count].instance.hostname }}
+      {%- endfor %}
+
+- name: Update system packages
+  import_role:
+    name: update_pkgs
+
+- name: Install basic packages
+  apt:
+    pkg:
+      - htop
+      - rsync
+      - software-properties-common
+      - gnupg2
+      - ssl-cert
+      - python3-passlib
+    state: present
+
+- name: Configure firewalld
+  import_tasks: firewall.yml
+
+- name: Secure ssh
+  import_role:
+    name: securessh
+  when: disable_root is defined
