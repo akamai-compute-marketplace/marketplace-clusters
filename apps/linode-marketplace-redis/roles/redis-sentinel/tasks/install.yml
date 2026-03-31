@@ -1,0 +1,57 @@
+---
+# roles/redis-sentinel/tasks/install.yml
+- name: Importing signing key for repo
+  apt_key:
+    url: https://packages.redis.io/gpg
+    state: present
+
+- name: Adding redis repository
+  apt_repository:
+    repo: deb https://packages.redis.io/deb jammy main
+    filename: redis
+    state: present
+
+- name: Updating repos
+  apt:
+    update_cache: true
+
+- name: Installing redis {{ redis_version }}
+  apt:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - "redis-tools=6:{{ redis_version }}-1rl1~jammy1"
+    - "redis-server=6:{{ redis_version }}-1rl1~jammy1"
+    - "redis-sentinel=6:{{ redis_version }}-1rl1~jammy1"
+
+- name: Stopping redis services
+  systemd:
+    name: '{{ item }}'
+    state: stopped
+  loop:
+    - redis-server
+    - redis-sentinel
+
+# add redis services to firewalls
+- name: Adding redis to internal firewall zone
+  ansible.posix.firewalld:
+    service: '{{ item.service }}'
+    permanent: true
+    zone: internal
+    state: enabled
+  loop:
+    - { service: 'redis' }
+    - { service: 'redis-sentinel' }
+
+- name: Adding servers to the internal firewall zone
+  ansible.posix.firewalld:
+    source: '{{ item.instance.ip_priv1 }}'
+    permanent: true
+    zone: internal
+    state: enabled
+  loop: '{{ redis_data.results }}'
+
+- name: Restarting firewalld on servers
+  systemd:
+    name: firewalld
+    state: restarted
