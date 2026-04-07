@@ -1,0 +1,15 @@
+---
+# destroy linodes
+- name: Destroying linodes
+  hosts: localhost
+  connection: local
+  vars_files: [group_vars/nomad/vars, group_vars/nomad/secret_vars]
+  vars:
+    count: '{{ cluster_size - 1 }}'
+  tasks:
+    - name: Deleting linodes except provisioner
+      linode.cloud.instance:
+        label: 'nomad-client-{{ item | int + 1 }}-{{ uuid }}'
+        api_token: '{{ api_token }}'
+        state: absent
+      with_sequence: count='{{ count }}'

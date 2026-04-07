@@ -1,0 +1,25 @@
+---
+- name: Update system packages
+  import_role:
+    name: update_pkgs
+
+- name: Install basic packages
+  apt:
+    pkg:
+      - htop
+      - rsync
+      - software-properties-common
+      - gnupg2
+      - ssl-cert
+      - python3-redis
+      - python3-passlib
+    state: present
+
+- name: Secure ssh
+  import_role:
+    name: securessh
+  when: disable_root is defined
+
+- name: Enabling fail2ban
+  import_role:
+    name: fail2ban_install
