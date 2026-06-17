@@ -5,6 +5,7 @@
   register: nodetool_output
   retries: 10
   delay: 20
+  failed_when: false
   until: >
     (nodetool_output.stdout | regex_findall('UN') | length) >= cluster_size
   run_once: true
