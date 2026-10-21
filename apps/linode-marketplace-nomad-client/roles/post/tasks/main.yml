@@ -24,7 +24,7 @@
     name: securessh
   when: disable_root is defined and cluster_mode == "client"
 
-- name: Writing deployment credentils locally
+- name: Writing deployment credentials locally
   blockinfile:
     path: '/home/{{ username }}/.deployment-secrets.txt'
     create: true
